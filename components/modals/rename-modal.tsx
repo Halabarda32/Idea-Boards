@@ -36,19 +36,12 @@ export const RenameModal = () => {
 			})
 	}
 
-	const handleClose = () => {
-		onClose()
-		setTimeout(() => {
-			document.body.style.pointerEvents = 'auto'
-		}, 350)
-	}
-
 	useEffect(() => {
 		setTitle(initialValues.title)
 	}, [initialValues.title, isOpen])
 
 	return (
-		<Dialog open={isOpen} onOpenChange={handleClose}>
+		<Dialog open={isOpen} onOpenChange={onClose}>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>Edit board title</DialogTitle>

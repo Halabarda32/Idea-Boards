@@ -11,7 +11,15 @@ interface IRenameModal {
 
 export const useRenameModal = create<IRenameModal>(set => ({
 	isOpen: false,
-	onOpen: (id, title) => set({ isOpen: true, initialValues: { id, title } }),
-	onClose: () => set({ isOpen: false, initialValues: defaultValues }),
 	initialValues: defaultValues,
+	onOpen: (id, title) => set({ isOpen: true, initialValues: { id, title } }),
+	onClose: () => {
+		set({ isOpen: false, initialValues: defaultValues })
+		const timer = setTimeout(() => {
+			if (document.body.style.pointerEvents) {
+				document.body.style.pointerEvents = 'auto'
+			}
+			clearTimeout(timer)
+		}, 450)
+	},
 }))
