@@ -20,12 +20,11 @@ declare global {
 		}
 
 		UserMeta: {
-			id: string
+			id?: string
 			// Custom user info set when authenticating with a secret key
-			info: {
-				// Example properties, for useSelf, useUser, useOthers, etc.
-				name: string
-				avatar: string
+			info?: {
+				name?: string,
+				avatar?: string
 			}
 		}
 

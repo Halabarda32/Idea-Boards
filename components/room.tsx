@@ -6,12 +6,17 @@ import { LiveblocksProvider, RoomProvider, ClientSideSuspense } from '@liveblock
 interface RoomProps {
 	children: ReactNode
 	roomId: string
-    fallback: NonNullable<ReactNode> | null
+	fallback: NonNullable<ReactNode> | null
 }
 
 export const Room = ({ children, roomId, fallback }: RoomProps) => {
+	// const liveblocksKey = process.env.NEXT_PUBLIC_LIVEBLOCKS_KEY
+	// if (!liveblocksKey) {
+	// 	throw new Error('NEXT_PUBLIC_LIVEBLOCKS_KEY is not defined in your environment variables')
+	// }
+
 	return (
-		<LiveblocksProvider publicApiKey={'pk_dev_iNML-D2bs_LMuWagfEJkSw1vUnc7cq_0mu762Zq90hX1ICizbYegPLjgx6XOTwp9'}>
+		<LiveblocksProvider authEndpoint="/api/liveblocks-auth">
 			<RoomProvider id={roomId}>
 				<ClientSideSuspense fallback={fallback}>{children}</ClientSideSuspense>
 			</RoomProvider>
