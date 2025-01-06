@@ -15,10 +15,18 @@ export const Room = ({ children, roomId, fallback }: RoomProps) => {
 	// 	throw new Error('NEXT_PUBLIC_LIVEBLOCKS_KEY is not defined in your environment variables')
 	// }
 
+	//TODO: initialStorage is set to default
+
 	return (
-		<LiveblocksProvider authEndpoint="/api/liveblocks-auth">
-			<RoomProvider id={roomId}>
-				<ClientSideSuspense fallback={fallback}>{children}</ClientSideSuspense>
+		<LiveblocksProvider authEndpoint="/api/liveblocks-auth" throttle={16}>
+			<RoomProvider
+				id={roomId}
+				initialPresence={{ cursor: null }}
+				// initialStorage={id => ({
+				// 	animals: new LiveList<string>([`Room-${id}-Animal1`]),
+				// })}
+			>
+				<ClientSideSuspense fallback={fallback}>{() => children}</ClientSideSuspense>
 			</RoomProvider>
 		</LiveblocksProvider>
 	)
