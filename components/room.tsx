@@ -3,7 +3,8 @@
 import { LiveList, LiveMap, LiveObject } from '@liveblocks/client'
 import { ReactNode } from 'react'
 import { LiveblocksProvider, RoomProvider, ClientSideSuspense } from '@liveblocks/react/suspense'
-import { Layer, Color } from '@/types/canvas'
+import { Layer } from '@/types/canvas'
+import { Loading } from '@/app/board/[boardId]/_components/loading'
 
 interface RoomProps {
 	children: ReactNode
@@ -11,9 +12,7 @@ interface RoomProps {
 	fallback: NonNullable<ReactNode> | null
 }
 
-export const Room = ({ children, roomId, fallback }: RoomProps) => {
-	//TODO: initialStorage is set to default
-
+export const Room = ({ children, roomId }: RoomProps) => {
 	return (
 		<LiveblocksProvider authEndpoint="/api/liveblocks-auth" throttle={16}>
 			<RoomProvider
@@ -23,7 +22,7 @@ export const Room = ({ children, roomId, fallback }: RoomProps) => {
 					layers: new LiveMap<string, LiveObject<Layer>>([]),
 					layerIds: new LiveList([]),
 				}}>
-				<ClientSideSuspense fallback={fallback}>{() => children}</ClientSideSuspense>
+				<ClientSideSuspense fallback={<Loading />}>{() => children}</ClientSideSuspense>
 			</RoomProvider>
 		</LiveblocksProvider>
 	)
