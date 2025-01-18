@@ -2,7 +2,7 @@
 // import { createClient } from '@liveblocks/client'
 
 import { LiveList, LiveMap, LiveObject } from '@liveblocks/client'
-import { Layer } from './types/canvas'
+import { Color, Layer } from './types/canvas'
 
 // const client = createClient({
 // 	publicApiKey: process.env.LIVEBLOCKS_KEY!,
@@ -15,6 +15,8 @@ declare global {
 			// Example, real-time cursor coordinates
 			cursor: { x: number; y: number } | null
 			selection: string[]
+			pencilDraft: [x: number, y: number, pressure: number][] | null
+			pencilColor: Color | null
 		}
 
 		// The Storage tree for the room, for useMutation, useStorage, etc.
