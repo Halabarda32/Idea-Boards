@@ -6,7 +6,7 @@
 
 ## 💻Live💻
 
-[Evogym Landing Page](https://idea-boards.vercel.app/)
+[Idea Boards](https://idea-boards.vercel.app/)
 
 ## About the project! 🔎
 
