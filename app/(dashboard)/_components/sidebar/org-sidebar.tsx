@@ -53,7 +53,7 @@ export const OrgSidebar = () => {
 					asChild
 					size="lg"
 					className="font-normal justify-start px-2 w-full"
-					variant={favorites ? 'ghost' : 'secondary'}>
+					variant={favorites ? 'board' : 'boardActive'}>
 					<Link href="/">
 						<LayoutDashboard className="h-4 w-4 mr-2" />
 						Team boards
@@ -63,7 +63,7 @@ export const OrgSidebar = () => {
 					asChild
 					size="lg"
 					className="font-normal justify-start px-2 w-full"
-					variant={favorites ? 'secondary' : 'ghost'}>
+					variant={favorites ? 'boardActive' : 'board'}>
 					<Link
 						href={{
 							pathname: '/',
